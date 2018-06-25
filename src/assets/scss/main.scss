@@ -15,5 +15,27 @@
 // 1. General
 
 body {
-    // background: #111;
+    background: #111;
+    font-family: sans-serif;
+}
+
+// 2. Global css
+.headline {
+    &--h1 {
+        font-size: 72px;
+    }
+}
+
+
+
+.stage {
+    background: linear-gradient(to bottom right, #111, #010101);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__headline {
+        color: #fff;
+    }
 }
