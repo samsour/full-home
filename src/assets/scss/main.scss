@@ -162,3 +162,33 @@ body {
     transform: translateY(100%);
     color: transparent;
   }
+
+    .content {
+        &__copy {
+            margin-bottom: 30px;
+        }
+
+        &__text-link {
+            color: #000;
+            text-decoration: none;
+
+            &:hover {
+                &:after {
+                    width: 100%;
+                }
+            }
+
+            &:after {
+                display: block;
+                height: 1px;
+                width: 20%;
+                content: "";
+                background: #000;
+                transition: .2s all ease-in-out;
+            }
+        }
+    }
+
+    .social-icon {
+        width: 60px;
+    }
