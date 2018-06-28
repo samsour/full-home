@@ -1,41 +1,164 @@
-// 0. Resets
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-*:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-// 1. General
 
 body {
-    background: #111;
-    font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  counter-reset: section;
 }
 
-// 2. Global css
-.headline {
-    &--h1 {
-        font-size: 72px;
-    }
+.hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
+/* Loader */
 
+.loader {
+  transition: 1s all;
+  z-index: 9999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
 
-.stage {
-    background: linear-gradient(to bottom right, #111, #010101);
-    color: #fff;
+/* Infinity */
+// $len: 242.776657104492px;
+// $time: 1.6s;
+// #outline {
+//   stroke-dasharray: $len*0.01, $len;
+//   stroke-dashoffset: 0;
+//   animation: anim $time linear infinite;
+// }
+// @keyframes anim {
+//   12.5% {
+//     stroke-dasharray: $len*0.14, $len;
+//     stroke-dashoffset: -$len*0.11;
+//   }
+//   43.75% {
+//     stroke-dasharray: $len*0.35, $len;
+//     stroke-dashoffset: -$len*0.35;
+//   }
+//   100% {
+//     stroke-dasharray: $len*0.01, $len;
+//     stroke-dashoffset: -$len*0.99;
+//   }
+// }
+
+.check-out {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #fff;
+}
+
+/* Signal */
+
+.signal {
+  border: 5px solid #333;
+  border-radius: 30px;
+  height: 30px;
+  left: 50%;
+  margin: -15px 0 0 -15px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  width: 30px;
+
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Splitscreen */
+
+.splitscreen {
+    transition: 1s all;
+    transform: translate3d(0px, 0px, 0px) !important;
+    display: block;
+  }
+
+  .splitscreen > .section {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    counter-increment: section;
+  }
+
+  .splitscreen > .section.active {
+    z-index: 1;
+  }
+
+  .section__counter::before {
+    display: block;
+    content: counter(section);
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .splitscreen > .section .section__half {
+    flex: 1;
+    backface-visibility: hidden;
+    transition: all 1s ease 0s;
+    display: inherit;
     align-items: center;
     justify-content: center;
+    min-width: 300px;
+  }
 
-    &__headline {
-        color: #fff;
-    }
-}
+.splitscreen > .section .section__half--light {
+    background: #fff;
+    transform: translateY(100%);
+    
+  }
+   
+  .splitscreen > .section .section__half--dark {
+    color: #fff;
+    background: #000;
+    transform: translateY(-100%);
+  }
+   
+  .splitscreen > .section.active .section__half--light, .splitscreen > .section.active .section__half--dark  {
+    transform: translateY(0);
+  }
+  
+  .splitscreen > .section.active ~ .section .section__half--light {
+    transform: translateY(-100%);
+    color: transparent;
+  }
+  
+  .splitscreen > .section.active ~ .section .section__half--dark {
+    transform: translateY(100%);
+    color: transparent;
+  }
