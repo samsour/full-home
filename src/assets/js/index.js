@@ -15,4 +15,7 @@ $(document).ready(function () {
 		$('.splitscreen').removeClass('hidden');
 	}, 1000);
 
+    setTimeout( () => {
+		$('.arrow-down').removeClass('hidden');
+	}, 3200);
 });
