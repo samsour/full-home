@@ -26,25 +26,33 @@ gulp.task('build',
 gulp.task('default',
   gulp.series('build', server, watch));
 
-
-
-
 const { COMPATIBILITY, PORT, PATHS } = loadConfig();
-
 
 function loadConfig() {
     let ymlFile = fs.readFileSync('config.yml', 'utf8');
     return yaml.load(ymlFile);
 }
 
-
 // Delete the "dist" folder
 // This happens every time a build starts
 function clean(done) {
   rimraf(PATHS.dist, done);
 }
-
-
+let webpackConfig = {
+  module: {
+    rules: [
+      {
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+}
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
@@ -62,22 +70,6 @@ function sass() {
     .pipe(browser.reload({ stream: true }));
 }
 
-
-let webpackConfig = {
-  module: {
-    rules: [
-      {
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
-  }
-}
 // Combine JavaScript into one file
 // In production, the file is minified
 function javascript() {
@@ -95,7 +87,6 @@ function javascript() {
     .pipe(gulp.dest(PATHS.dist + '/assets/js'));
 }
 
-
 // Copy images to the "dist" folder
 // In production, the images are compressed
 function images() {
@@ -105,7 +96,6 @@ function images() {
     })))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
 }
-
 
 // Copy images to the "dist" folder
 // In production, the images are compressed
@@ -117,7 +107,6 @@ function html() {
     .pipe(gulp.dest(PATHS.dist));
 }
 
-
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
@@ -128,12 +117,9 @@ function server(done) {
   done();
 }
 
-
 function copyHtml() {
   return gulp.src('src/index.html').pipe(gulp.dest(PATHS.dist));
 }
-
-
 
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
