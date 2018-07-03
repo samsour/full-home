@@ -171,6 +171,12 @@ body {
             text-align: center;
         }
 
+        &__image {
+            &--background {
+                height: 100%;
+            }
+        }
+
         &__text-link {
             color: #000;
             text-decoration: none;
