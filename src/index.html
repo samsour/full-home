@@ -7,11 +7,8 @@
     <title>samsour</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
-    <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#000">
-    <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#000">
-    <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
 </head>
 
@@ -19,35 +16,63 @@
     <div class="loader">
         <div class="signal"></div>
     </div>
-    <div class="splitscreen hidden" class="main">
+
+    <div class="splitscreen hidden">
+
         <div class="section">
             <div class="section__half section__half--dark">
                 <div class="content">
-                    <p class="content__copy">This site is under construction.</p>
-                    <span class="arrow-down hidden">
-                        <!-- css generated icon -->
-                    </span>
+                    <h1 class="content__subline">Sam Sauer</h1>
+                    <div class="content__headline">
+                        <span class="code">&lt;code&gt;</span> &
+                        <span class="design">Design</span>
+                    </div>
                 </div>
             </div>
+            <div class="section__half section__half--light">
+                <div class="content">
+                    <img class="content__animation" src="./assets/img/setting.svg">
+                    <p class="content__copy">*Die Seite ist in Entwicklung.</p>
+                </div>
+            </div>
+            <span class="arrow-down hidden">
+            </span>
         </div>
+
         <div class="section">
             <div class="section__half section__half--light">
                 <div class="content">
                     <p class="content__copy">
-                        <strong>Contact</strong> me.
+                        Sag 
+                        <span class="content__copy--bold">hallo</span>.
                     </p>
-                    <a class="content__text-link" href="mailto:sam.sauer@hotmail.de">me@samsour.de</a>
+                    <ul class="social">
+                        <li class="social__item">
+                            <a class="social__item__link" href="mailto:hi@samsour.de">
+                                <span class="social__item__text social__item__text--dark">hi@samsour.de</span>
+                                <img class="social__item__image social__item__image--inline" src="./assets/img/mail-outline.svg">
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
+
             <div class="section__half section__half--dark">
                 <div class="content">
                     <p class="content__copy">
-                        <strong>Follow</strong> me.</p>
-                    <a href="https://github.com/samsour/">
-                        <img class="social-icon" src="assets/img/github-logo.svg">
-                    </a>
+                        <span class="content__copy--bold">Folge</span> mir auf</p>
+                    <ul class="social">
+                        <li class="social__item">
+                            <a class="social__item__link" href="https://github.com/samsour" target="_blank">
+                                <span class="social__item__text social__item__text--light">GitHub</span>
+                                <img class="social__item__image" src="./assets/img/github.svg">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
         </div>
     </div>
     <script src="./assets/js/index.js"></script>
