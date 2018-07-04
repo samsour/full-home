@@ -158,30 +158,35 @@ body {
             }
         }
 
-        &__copy {
-            margin: 30px;
-            text-align: center;
-        }
+        .content {
 
-        &__text-link {
-            color: #000;
-            text-decoration: none;
+            &__copy {
+                margin: 30px;
+                text-align: center;
+            }
 
-            &:hover {
+            &__text-link {
+                color: #000;
+                text-decoration: none;
+
+                &:hover {
+                    &:after {
+                        width: 100%;
+                    }
+                }
+
                 &:after {
-                    width: 100%;
+                    display: block;
+                    height: 1px;
+                    width: 20%;
+                    content: "";
+                    background: #000;
+                    transition: .2s all ease-in-out;
                 }
             }
-
-            &:after {
-                display: block;
-                height: 1px;
-                width: 20%;
-                content: "";
-                background: #000;
-                transition: .2s all ease-in-out;
-            }
         }
+
+        
 
         .social-icon {
             width: 60px;
